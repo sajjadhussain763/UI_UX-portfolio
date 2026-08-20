@@ -3,261 +3,2506 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sajjad Hussain - UI/UX & Product Designer Portfolio</title>
+    <meta name="description" content="Portfolio of Sajjad Hussain - UI/UX & Product Designer. Specializing in Figma design systems, interactive prototypes, user flows, and enterprise product design.">
+    <title>Sajjad Hussain | UI/UX & Product Designer Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
+        /* Modern CSS Reset & Custom Design Tokens */
+        :root {
+            --bg-base: #0f172a; /* Slate 900 */
+            --bg-surface: #1e293b; /* Slate 800 */
+            --bg-surface-hover: #2b3952;
+            --primary: #0284c7; /* Sky 600 */
+            --primary-hover: #0369a1; /* Sky 700 */
+            --primary-light: #38bdf8; /* Sky 400 */
+            --primary-glow: rgba(56, 189, 248, 0.15);
+            --text-main: #f8fafc; /* Slate 50 */
+            --text-secondary: #cbd5e1; /* Slate 300 */
+            --text-muted: #94a3b8; /* Slate 400 */
+            --border: #334155; /* Slate 700 */
+            --border-hover: #475569; /* Slate 600 */
+            
+            --font-heading: 'Outfit', 'Inter', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-glow: 0 0 25px rgba(2, 132, 199, 0.25);
+            
+            --border-radius-sm: 6px;
+            --border-radius-md: 12px;
+            --border-radius-lg: 20px;
+        }
+
+        /* Base Styles */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            scroll-behavior: smooth;
         }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: #0f172a;
-            color: #f8fafc;
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            font-family: var(--font-body);
             line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
+
+        /* Grid & Container */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        p {
+            color: var(--text-secondary);
+        }
+
+        /* Utility Components */
+        .gradient-text {
+            background: linear-gradient(135deg, #38bdf8 0%, #0284c7 50%, #6366f1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .badge-pulse {
+            background-color: rgba(2, 132, 199, 0.15);
+            color: var(--primary-light);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 6px 16px;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .badge-pulse::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background-color: #22c55e;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 8px #22c55e;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.9); opacity: 1; }
+            50% { transform: scale(1.3); opacity: 0.4; }
+            100% { transform: scale(0.9); opacity: 1; }
+        }
+
+        /* Buttons */
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .btn {
+            font-family: var(--font-heading);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: var(--border-radius-sm);
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            border: 1px solid transparent;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: #ffffff;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            box-shadow: var(--shadow-glow);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--bg-surface);
+            border-color: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        /* Header Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            transition: var(--transition-smooth);
+        }
+
         nav {
-            background-color: #1e293b;
-            padding: 18px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #334155;
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            height: 80px;
         }
-        .logo {
-            font-size: 1.2rem;
+
+        .nav-logo {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
             font-weight: 800;
-            color: #38bdf8;
-            letter-spacing: -0.5px;
-        }
-        .nav-links a {
-            color: #cbd5e1;
+            color: #ffffff;
             text-decoration: none;
-            margin-left: 20px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-        .nav-links a:hover {
-            color: #38bdf8;
-        }
-        .hero {
-            padding: 80px 8% 60px 8%;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-        .badge {
-            background-color: #0284c7;
-            color: #ffffff;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 16px;
-        }
-        h1 {
-            font-size: 2.8rem;
-            font-weight: 800;
-            line-height: 1.15;
-            margin-bottom: 16px;
-            color: #ffffff;
-        }
-        .hero p {
-            font-size: 1.15rem;
-            color: #94a3b8;
-            max-width: 750px;
-            margin-bottom: 30px;
-        }
-        .btn-group {
             display: flex;
-            gap: 15px;
+            align-items: center;
+            gap: 8px;
         }
-        .btn {
-            padding: 12px 24px;
-            border-radius: 6px;
-            font-weight: 600;
+
+        .nav-logo span {
+            color: var(--primary-light);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
             text-decoration: none;
             font-size: 0.95rem;
-            display: inline-block;
+            font-weight: 500;
+            transition: var(--transition-smooth);
+            position: relative;
         }
-        .btn-primary {
-            background-color: #0284c7;
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-light);
+            transition: var(--transition-smooth);
+        }
+
+        .nav-links a:hover {
             color: #ffffff;
         }
-        .btn-secondary {
-            background-color: #334155;
-            color: #ffffff;
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
         }
-        .section-title {
-            padding: 0 8%;
-            max-width: 1100px;
-            margin: 40px auto 20px auto;
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: #ffffff;
-            border-left: 4px solid #0284c7;
-            padding-left: 12px;
+
+        /* Responsive Mobile Navigation Menu */
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            outline: none;
         }
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-            padding: 0 8% 60px 8%;
-            max-width: 1100px;
-            margin: 0 auto;
+
+        .menu-btn span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-main);
+            margin: 5px 0;
+            transition: var(--transition-smooth);
         }
-        .card {
-            background-color: #1e293b;
-            border-radius: 8px;
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 100px 0;
+            position: relative;
             overflow: hidden;
-            border: 1px solid #334155;
-            transition: transform 0.2s, border-color 0.2s;
+            display: flex;
+            align-items: center;
         }
-        .card:hover {
+
+        /* Decorative Grid Backgrounds */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 15% 25%, rgba(56, 189, 248, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 65%, rgba(99, 102, 241, 0.08) 0%, transparent 40%);
+            z-index: -1;
+        }
+
+        .hero-layout {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 36px;
+            max-width: 620px;
+        }
+
+        .hero-illustration {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-figma-badge {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: var(--border-radius-md);
+            padding: 24px;
+            width: 100%;
+            max-width: 380px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            z-index: 2;
+        }
+
+        .figma-badge-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            font-family: var(--font-heading);
+            color: #ffffff;
+            font-size: 1.1rem;
+        }
+
+        .figma-badge-tag {
+            background-color: rgba(34, 197, 94, 0.15);
+            color: #4ade80;
+            border: 1px solid rgba(74, 222, 128, 0.2);
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            margin-left: auto;
+        }
+
+        .figma-badge-items {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .figma-badge-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .figma-badge-item svg {
+            color: var(--primary-light);
+            flex-shrink: 0;
+        }
+
+        .hero-glow-sphere {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(2, 132, 199, 0.2) 0%, transparent 70%);
+            z-index: 1;
+            filter: blur(20px);
+            pointer-events: none;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background-color: var(--bg-surface);
+            border-y: 1px solid var(--border);
+            padding: 40px 0;
+            margin-bottom: 80px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: var(--primary-light);
+            margin-bottom: 6px;
+        }
+
+        .stat-item p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* Competencies & Skills */
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px auto;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .competencies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin-bottom: 100px;
+        }
+
+        .competency-card {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: var(--border-radius-md);
+            padding: 32px;
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .competency-card:hover {
             transform: translateY(-4px);
-            border-color: #0284c7;
+            border-color: var(--primary-light);
+            box-shadow: 0 8px 30px rgba(2, 132, 199, 0.1);
         }
-        .card-img {
-            height: 180px;
-            background-color: #334155;
+
+        .competency-icon {
+            background-color: rgba(2, 132, 199, 0.1);
+            color: var(--primary-light);
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #38bdf8;
+            margin-bottom: 8px;
+        }
+
+        .competency-card h3 {
+            font-size: 1.25rem;
+        }
+
+        .competency-card p {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Design Process Timeline (Stepper) */
+        .process-section {
+            background-color: rgba(30, 41, 59, 0.4);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 100px 0;
+            margin-bottom: 100px;
+        }
+
+        .process-stepper {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            position: relative;
+            margin-bottom: 48px;
+        }
+
+        .process-stepper::before {
+            content: '';
+            position: absolute;
+            top: 24px;
+            left: 12%;
+            width: 76%;
+            height: 2px;
+            background-color: var(--border);
+            z-index: 1;
+        }
+
+        .step-trigger {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 2;
+            width: 100%;
+        }
+
+        .step-bubble {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--bg-surface);
+            border: 2px solid var(--border);
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-weight: 700;
             font-size: 1.1rem;
-            border-bottom: 1px solid #334155;
+            transition: var(--transition-smooth);
+            margin-bottom: 16px;
         }
-        .card-body {
-            padding: 20px;
+
+        .step-trigger:hover .step-bubble {
+            border-color: var(--primary-light);
+            color: var(--primary-light);
+            transform: scale(1.05);
         }
-        .card-tag {
-            color: #38bdf8;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-bottom: 6px;
-        }
-        .card-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 8px;
+
+        .step-trigger.active .step-bubble {
+            background-color: var(--primary);
+            border-color: var(--primary-light);
             color: #ffffff;
+            box-shadow: 0 0 15px var(--primary);
         }
-        .card-desc {
+
+        .step-title {
+            color: var(--text-muted);
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: var(--transition-smooth);
+        }
+
+        .step-trigger.active .step-title {
+            color: var(--primary-light);
+        }
+
+        .process-display-panel {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: var(--border-radius-md);
+            padding: 40px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+        }
+
+        .process-content {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .process-content.active {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .process-desc-side h3 {
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .process-desc-side h3 span {
+            color: var(--primary-light);
+        }
+
+        .process-desc-side p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .deliverable-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .deliverable-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
             font-size: 0.9rem;
-            color: #94a3b8;
-            margin-bottom: 15px;
+            color: var(--text-secondary);
         }
-        .tags {
+
+        .deliverable-item svg {
+            color: var(--primary-light);
+            flex-shrink: 0;
+        }
+
+        .process-figma-side {
+            background-color: rgba(15, 23, 42, 0.4);
+            border: 1px solid var(--border);
+            border-radius: var(--border-radius-sm);
+            padding: 24px;
+        }
+
+        .figma-side-header {
+            font-weight: 700;
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .figma-side-header svg {
+            color: #f24e1e; /* Figma Orange Brand Color */
+        }
+
+        .figma-feature-box {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .figma-feature-card {
+            background-color: var(--bg-surface);
+            padding: 12px 16px;
+            border-radius: var(--border-radius-sm);
+            font-size: 0.85rem;
+            border-left: 3px solid var(--primary-light);
+        }
+
+        .figma-feature-card strong {
+            display: block;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+
+        /* Case Studies Grid */
+        .case-studies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 32px;
+            margin-bottom: 100px;
+        }
+
+        .case-study-card {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .case-study-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--primary-light);
+            box-shadow: 0 12px 40px rgba(2, 132, 199, 0.15);
+        }
+
+        .card-visual {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-visual svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .card-body {
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-client {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--primary-light);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 8px;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .card-desc {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        .card-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 6px;
+            gap: 8px;
+            margin-bottom: 24px;
         }
-        .tag {
-            background-color: #0f172a;
-            color: #cbd5e1;
-            padding: 3px 8px;
-            border-radius: 4px;
+
+        .card-tag {
+            background-color: rgba(15, 23, 42, 0.5);
+            color: var(--text-secondary);
             font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 4px;
+            border: 1px solid var(--border);
         }
-        footer {
-            background-color: #0284c7;
+
+        .card-cta {
+            align-self: flex-start;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            color: var(--primary-light);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+
+        .card-cta:hover {
             color: #ffffff;
-            text-align: center;
-            padding: 30px 8%;
+        }
+
+        .card-cta svg {
+            transition: var(--transition-smooth);
+        }
+
+        .card-cta:hover svg {
+            transform: translateX(4px);
+        }
+
+        /* Interactive Figma Sandbox Showcase */
+        .sandbox-section {
+            background-color: var(--bg-surface);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 100px 0;
+            margin-bottom: 100px;
+        }
+
+        .sandbox-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: stretch;
+        }
+
+        .sandbox-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .control-label {
+            font-weight: 600;
             font-size: 0.9rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
-        footer a {
+
+        .control-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .control-opt {
+            background-color: var(--bg-base);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .control-opt:hover {
+            border-color: var(--primary-light);
             color: #ffffff;
-            font-weight: 700;
-            text-decoration: underline;
+        }
+
+        .control-opt.active {
+            background-color: var(--primary);
+            border-color: var(--primary-light);
+            color: #ffffff;
+        }
+
+        .sandbox-preview {
+            background-color: var(--bg-base);
+            border: 1px solid var(--border);
+            border-radius: var(--border-radius-md);
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            position: relative;
+        }
+
+        .preview-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 16px;
+        }
+
+        .preview-header-title {
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .preview-canvas {
+            flex-grow: 1;
+            min-height: 180px;
+            background-color: var(--bg-surface);
+            border: 1px dashed var(--border);
+            border-radius: var(--border-radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Live Styles Injection Target */
+        .sandbox-live-component {
+            transition: var(--transition-smooth);
+            user-select: none;
+        }
+
+        .preview-code-panel {
+            background-color: rgba(15, 23, 42, 0.8);
+            border: 1px solid var(--border);
+            border-radius: var(--border-radius-sm);
+            padding: 16px;
+            font-family: monospace;
+            font-size: 0.8rem;
+            color: #a7f3d0; /* Mint Code Highlight */
+            overflow-x: auto;
+            max-height: 140px;
+        }
+
+        /* Remote Readiness & Asynchronous Collaboration */
+        .remote-layout {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 100px;
+        }
+
+        .remote-illustration {
+            position: relative;
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: var(--border-radius-md);
+            padding: 24px;
+            overflow: hidden;
+        }
+
+        .figma-file-mock {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            background-color: var(--bg-base);
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .figma-file-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 12px;
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .figma-file-layer {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border);
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-family: monospace;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .figma-file-layer.annotated::before {
+            content: 'Spec / Handoff';
+            position: absolute;
+            top: -8px;
+            right: 12px;
+            background-color: var(--primary);
+            color: #ffffff;
+            font-size: 0.65rem;
+            padding: 1px 6px;
+            border-radius: 3px;
+            font-family: var(--font-body);
+            font-weight: 600;
+        }
+
+        .loom-preview-box {
+            position: relative;
+            background-color: #334155;
+            border-radius: var(--border-radius-sm);
+            height: 180px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .loom-play-btn {
+            background-color: #f43f5e; /* Rose / Loom theme color */
+            color: #ffffff;
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(244, 63, 94, 0.4);
+            transition: var(--transition-smooth);
+        }
+
+        .loom-play-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(244, 63, 94, 0.6);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background-color: var(--bg-surface);
+            border-top: 1px solid var(--border);
+            padding: 100px 0 60px 0;
+        }
+
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 48px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .contact-info-title h2 {
+            font-size: 2.2rem;
+            margin-bottom: 16px;
+        }
+
+        .contact-info-title p {
+            color: var(--text-muted);
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-method-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background-color: rgba(15, 23, 42, 0.4);
+            border: 1px solid var(--border);
+            padding: 16px 20px;
+            border-radius: var(--border-radius-sm);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .contact-method-card:hover {
+            border-color: var(--primary-light);
+            background-color: var(--bg-base);
+            transform: translateX(4px);
+        }
+
+        .contact-method-icon {
+            background-color: rgba(2, 132, 199, 0.15);
+            color: var(--primary-light);
+            width: 44px;
+            height: 44px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-method-details h4 {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .contact-method-details p {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .contact-form {
+            background-color: rgba(15, 23, 42, 0.4);
+            border: 1px solid var(--border);
+            border-radius: var(--border-radius-md);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            position: relative;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            background-color: var(--bg-base);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary-light);
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-alert {
+            display: none;
+            background-color: rgba(34, 197, 94, 0.15);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #4ade80;
+            padding: 14px;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            text-align: center;
+            animation: fadeIn 0.4s ease;
+        }
+
+        /* Modal Structure for Case Studies Details */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-container {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: var(--border-radius-md);
+            width: 90%;
+            max-width: 900px;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-lg);
+            transform: translateY(30px);
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .modal-overlay.active .modal-container {
+            transform: translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            background-color: #ef4444; /* Alert Red */
+            border-color: #f87171;
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 40px;
+        }
+
+        .modal-hero-visual {
+            height: 180px;
+            border-radius: var(--border-radius-sm);
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .modal-hero-visual svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .modal-title-area {
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+        }
+
+        .modal-meta-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .modal-meta-item h5 {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 4px;
+        }
+
+        .modal-meta-item p {
+            font-size: 0.9rem;
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        .modal-section-block {
+            margin-bottom: 32px;
+        }
+
+        .modal-section-block h4 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            color: var(--primary-light);
+            border-left: 3px solid var(--primary);
+            padding-left: 10px;
+        }
+
+        .modal-section-block p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .modal-sublist {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-left: 16px;
+        }
+
+        .modal-sublist li {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .modal-sublist li::before {
+            content: '→';
+            color: var(--primary-light);
+            font-weight: bold;
+        }
+
+        /* Footer Section */
+        footer {
+            background-color: var(--bg-base);
+            border-top: 1px solid var(--border);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Responsive Styles (Media Queries) */
+        @media (max-width: 992px) {
+            .hero-layout {
+                grid-template-columns: 1fr;
+                gap: 48px;
+                text-align: center;
+            }
+            .hero-content p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .btn-group {
+                justify-content: center;
+            }
+            .hero-illustration {
+                order: -1;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 32px;
+            }
+            .process-stepper {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+            }
+            .process-stepper::before {
+                display: none;
+            }
+            .process-content.active {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            .sandbox-layout {
+                grid-template-columns: 1fr;
+            }
+            .remote-layout {
+                grid-template-columns: 1fr;
+            }
+            .contact-layout {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-btn {
+                display: block;
+            }
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--bg-base);
+                flex-direction: column;
+                padding: 48px 0;
+                gap: 36px;
+                transition: var(--transition-smooth);
+                border-top: 1px solid var(--border);
+            }
+            .nav-links.active {
+                left: 0;
+            }
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .modal-meta-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            .modal-body {
+                padding: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            .process-stepper {
+                grid-template-columns: 1fr;
+            }
+            .deliverable-list {
+                grid-template-columns: 1fr;
+            }
+            .btn {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">SAJJAD HUSSAIN</div>
-        <div class="nav-links">
-            <a href="#projects">Work Case Studies</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
+    <!-- Header Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="nav-logo">
+                    <!-- Custom SVG Logo -->
+                    <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;">
+                        <circle cx="16" cy="16" r="14" stroke="url(#logoGrad)" stroke-width="3"/>
+                        <path d="M11 16L15 20L21 12" stroke="#38bdf8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        <defs>
+                            <linearGradient id="logoGrad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#38bdf8"/>
+                                <stop offset="1" stop-color="#0284c7"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    SAJJAD<span>.DESIGN</span>
+                </a>
+                <div class="nav-links" id="navLinks">
+                    <a href="#work" class="active">Work Case Studies</a>
+                    <a href="#process">Design Process</a>
+                    <a href="#sandbox">Design Sandbox</a>
+                    <a href="#remote">Remote Workflow</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <button class="menu-btn" id="menuBtn" aria-label="Toggle Navigation Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
         </div>
-    </nav>
+    </header>
 
-    <div class="hero">
-        <span class="badge">UI/UX & Product Design Portfolio</span>
-        <h1>Designing Intuitive Digital Experiences & Systems</h1>
-        <p>Specialized in end-to-end user experience design — from user flow mapping and wireframing to interactive Figma prototyping and scalable enterprise design systems.</p>
-        <div class="btn-group">
-            <a href="#projects" class="btn btn-primary">View Case Studies</a>
-            <a href="mailto:sajjadhussainshah763@gmail.com" class="btn btn-secondary">Get in Touch</a>
-        </div>
-    </div>
+    <!-- Main Content -->
+    <main>
 
-    <div class="section-title" id="projects">Featured UI/UX Case Studies</div>
-
-    <div class="projects-grid">
-        <div class="card">
-            <div class="card-img" style="background: linear-gradient(135deg, #0f172a 0%, #0284c7 100%);">
-                Enterprise Platform UI
-            </div>
-            <div class="card-body">
-                <div class="card-tag">Trovicor Solutions</div>
-                <div class="card-title">Internal Enterprise Dashboard Redesign</div>
-                <div class="card-desc">Redesigned complex data workflows into clean, interactive navigation modules and Figma auto-layout screens for high-efficiency enterprise operations.</div>
-                <div class="tags">
-                    <span class="tag">Figma</span>
-                    <span class="tag">Design Systems</span>
-                    <span class="tag">Dashboard UI</span>
-                    <span class="tag">User Flows</span>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-layout">
+                    <div class="hero-content">
+                        <div class="badge-pulse">Available for Asynchronous / Remote Work</div>
+                        <h1>Crafting High-Performance <span class="gradient-text">Design Systems</span> & Enterprise Products</h1>
+                        <p>I'm Sajjad Hussain, a UI/UX & Product Designer based in Islamabad, Pakistan. I specialize in complex workflows, Figma layout structures, and collaborative design-to-development handoffs.</p>
+                        <div class="btn-group">
+                            <a href="#work" class="btn btn-primary">
+                                View Case Studies
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                            </a>
+                            <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+                        </div>
+                    </div>
+                    <div class="hero-illustration">
+                        <div class="hero-glow-sphere"></div>
+                        <div class="hero-figma-badge">
+                            <div class="figma-badge-title">
+                                <!-- Figma Logo SVG -->
+                                <svg width="24" height="36" viewBox="0 0 24 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6 12C9.31371 12 12 9.31371 12 6C12 2.68629 9.31371 0 6 0C2.68629 0 0 2.68629 0 6C0 9.31371 2.68629 12 6 12Z" fill="#F24E1E"/>
+                                    <path d="M18 12C21.3137 12 24 9.31371 24 6C24 2.68629 21.3137 0 18 0C14.6863 0 12 2.68629 12 6C12 9.31371 14.6863 12 18 12Z" fill="#FF7262"/>
+                                    <path d="M6 24C9.31371 24 12 21.3137 12 18C12 14.6863 9.31371 12 6 12C2.68629 12 0 14.6863 0 18C0 21.3137 2.68629 24 6 24Z" fill="#A259FF"/>
+                                    <path d="M6 36C9.31371 36 12 33.3137 12 30V24H6C2.68629 24 0 26.6863 0 30C0 33.3137 2.68629 36 6 36Z" fill="#0ACF83"/>
+                                    <path d="M18 24C21.3137 24 24 21.3137 24 18C24 14.6863 21.3137 12 18 12V24Z" fill="#1ABC9C"/>
+                                </svg>
+                                Figma Specialist
+                                <span class="figma-badge-tag">Expertise</span>
+                            </div>
+                            <div class="figma-badge-items">
+                                <div class="figma-badge-item">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    Auto-Layout 4.0 Nesting Rules
+                                </div>
+                                <div class="figma-badge-item">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    Dynamic Component Variants
+                                </div>
+                                <div class="figma-badge-item">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    CSS & JSON Design Token Sync
+                                </div>
+                                <div class="figma-badge-item">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    Developer Handoff Annotations
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="card">
-            <div class="card-img" style="background: linear-gradient(135deg, #0284c7 0%, #38bdf8 100%); color: #0f172a;">
-                E-Learning App UX
-            </div>
-            <div class="card-body">
-                <div class="card-tag">Al-Nafi</div>
-                <div class="card-title">Learning Portal & Onboarding Funnel</div>
-                <div class="card-desc">Engineered user onboarding flows and interactive learning management portal screens to optimize user engagement and reduce sign-up drop-off.</div>
-                <div class="tags">
-                    <span class="tag">User Research</span>
-                    <span class="tag">Clickable Prototype</span>
-                    <span class="tag">UX Audit</span>
-                    <span class="tag">Mobile Web</span>
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h3>2+</h3>
+                        <p>Years UI/UX Experience</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>15+</h3>
+                        <p>Enterprise Dashboards</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>99%</h3>
+                        <p>Figma Library Purity</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>100%</h3>
+                        <p>Remote Work Readiness</p>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="card">
-            <div class="card-img" style="background: linear-gradient(135deg, #1e293b 0%, #334155 100%);">
-                Figma System Design
+        <!-- Core Competencies -->
+        <section class="container" style="margin-bottom: 100px;">
+            <div class="section-header">
+                <h2>Design Capabilities Built for Scaling</h2>
+                <p>Translating business objectives into interactive screen systems through a strict UX execution framework.</p>
             </div>
-            <div class="card-body">
-                <div class="card-tag">Design System Kit</div>
-                <div class="card-title">Unified UI Tokens & Component Library</div>
-                <div class="card-desc">Architected a multi-brand Figma design system featuring auto-layout variants, typography scales, accessibility tokens, and interactive UI component states.</div>
-                <div class="tags">
-                    <span class="tag">Component Kits</span>
-                    <span class="tag">Auto-Layout</span>
-                    <span class="tag">Accessibility WCAG</span>
+            <div class="competencies-grid">
+                <div class="competency-card">
+                    <div class="competency-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                    </div>
+                    <h3>UX Heuristic Audits</h3>
+                    <p>Evaluating existing workflows against usability metrics to eliminate friction, optimize interfaces, and streamline screen hierarchies.</p>
+                </div>
+                <div class="competency-card">
+                    <div class="competency-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line><line x1="3" y1="9" x2="21" y2="9"></line></svg>
+                    </div>
+                    <h3>Interactive Wireframes</h3>
+                    <p>Drafting logical structures and page blueprints before high-fidelity visual design, establishing a clear visual hierarchy and user pathing.</p>
+                </div>
+                <div class="competency-card">
+                    <div class="competency-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                    </div>
+                    <h3>Figma Design Systems</h3>
+                    <p>Constructing scalable button libraries, input layouts, navigation patterns, and form controls using auto-layout nested configurations.</p>
+                </div>
+                <div class="competency-card">
+                    <div class="competency-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 22 22 22"></polygon></svg>
+                    </div>
+                    <h3>Asynchronous Spec Handoff</h3>
+                    <p>Configuring pixel-perfect handoff files with explicit grid coordinates, design token bindings, and walkthrough videos for developer clarity.</p>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <footer id="contact">
-        <p><strong>Sajjad Hussain</strong> | UI/UX & Product Designer</p>
-        <p>Location: Islamabad, Pakistan | Email: <a href="mailto:sajjadhussainshah763@gmail.com">sajjadhussainshah763@gmail.com</a></p>
+        <!-- Design Process Timeline -->
+        <section class="process-section" id="process">
+            <div class="container">
+                <div class="section-header">
+                    <h2>A Rigorous Design Process</h2>
+                    <p>How I transform abstract concepts into logical, functional, and developer-friendly interfaces.</p>
+                </div>
+                
+                <!-- Stepper Triggers -->
+                <div class="process-stepper">
+                    <button class="step-trigger active" onclick="switchProcess(0)">
+                        <div class="step-bubble">01</div>
+                        <div class="step-title">Discover & Research</div>
+                    </button>
+                    <button class="step-trigger" onclick="switchProcess(1)">
+                        <div class="step-bubble">02</div>
+                        <div class="step-title">Define & Structure</div>
+                    </button>
+                    <button class="step-trigger" onclick="switchProcess(2)">
+                        <div class="step-bubble">03</div>
+                        <div class="step-title">Figma UI Kit</div>
+                    </button>
+                    <button class="step-trigger" onclick="switchProcess(3)">
+                        <div class="step-bubble">04</div>
+                        <div class="step-title">Prototype & Handoff</div>
+                    </button>
+                </div>
+
+                <!-- Display Panels -->
+                <div class="process-display-panel">
+                    <!-- Phase 1 -->
+                    <div class="process-content active" id="process-0">
+                        <div class="process-desc-side">
+                            <h3><span>01.</span> User Research & Auditing</h3>
+                            <p>Before launching Figma, I focus on gathering context. I conduct stakeholder interviews, perform unmoderated usability audits, map competitor strategies, and document user pain points.</p>
+                            <div class="deliverable-list">
+                                <div class="deliverable-item">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    Empathy Map Models
+                                </div>
+                                <div class="deliverable-item">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    Competitor Matrix
+                                </div>
+                                <div class="deliverable-item">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    Heuristic Audit Sheet
+                                </div>
+                                <div class="deliverable-item">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    User Persona Cards
+                                </div>
+                            </div>
+                        </div>
+                        <div class="process-figma-side">
+                            <div class="figma-side-header">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                                FIGMA STAGE: RESEARCH SPACE
+                            </div>
+                            <div class="figma-feature-box">
+                                <div class="figma-feature-card">
+                                    <strong>Interactive FigJam Workspaces</strong>
+                                    Leveraging FigJam for real-time remote user mapping, clustering card-sorting results, and highlighting layout issues.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Phase 2 -->
+                    <div class="process-content" id="process-1">
+                        <div class="process-desc-side">
+                            <h3><span>02.</span> Information Architecture & Flows</h3>
+                            <p>Structure precedes style. I organize content models and draft user flows that represent logical click journeys, ensuring navigation matches natural mental models.</p>
+                            <div class="deliverable-list">
+                                <div class="deliverable-item">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    Interactive User Flows
+                                </div>
+                                <div class="deliverable-item">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    Structural Site Maps
+                                </div>
+                                <div class="deliverable-item">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    Low-Fi Wireframe Layouts
+                                </div>
+                                <div class="deliverable-item">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    Navigation Hierarchies
+                                </div>
+                            </div>
+                        </div>
+                        <div class="process-figma-side">
+                            <div class="figma-side-header">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                                FIGMA STAGE: WIREFRAMING
+                            </div>
+                            <div class="figma-feature-box">
+                                <div class="figma-feature-card">
+                                    <strong>Figma Layout Grids & Columns</strong>
+                                    Drafting structural wireframes bound to 8px grids, validating alignment across responsive breakpoints.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Phase 3 -->
+                    <div class="process-content" id="process-2">
+                        <div class="process-desc-side">
+                            <h3><span>03.</span> Figma Component Architecture</h3>
+                            <p>Scaling visual consistency using atomic design principles. I build custom component variants with strict naming protocols, variables, and WCAG accessibility standards.</p>
+                            <div class="deliverable-list">
+                                <div class="deliverable-item">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    Figma UI Tokens (Colors/Sizes)
+                                </div>
+                                <div class="deliverable-item">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    Nested Auto-Layout Cards
+                                </div>
+                                <div class="deliverable-item">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    Button States Component Kit
+                                </div>
+                                <div class="deliverable-item">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    Responsive Screen Library
+                                </div>
+                            </div>
+                        </div>
+                        <div class="process-figma-side">
+                            <div class="figma-side-header">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                                FIGMA STAGE: DESIGN SYSTEMS
+                            </div>
+                            <div class="figma-feature-box">
+                                <div class="figma-feature-card">
+                                    <strong>Boolean Properties & Instances</strong>
+                                    Configuring responsive layouts using Figma variables to swap languages, light/dark themes, and viewport scaling automatically.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Phase 4 -->
+                    <div class="process-content" id="process-3">
+                        <div class="process-desc-side">
+                            <h3><span>04.</span> Interactive Prototypes & Handoff</h3>
+                            <p>Validating animations and user interactions through clickable prototypes before staging developer handoffs with clear layout annotations.</p>
+                            <div class="deliverable-list">
+                                <div class="deliverable-item">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    Figma Smart-Animate Flows
+                                </div>
+                                <div class="deliverable-item">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    Remote Loom Walkthroughs
+                                </div>
+                                <div class="deliverable-item">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    Annotated Handoff Files
+                                </div>
+                                <div class="deliverable-item">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    JSON Token Export Schemas
+                                </div>
+                            </div>
+                        </div>
+                        <div class="process-figma-side">
+                            <div class="figma-side-header">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                                FIGMA STAGE: HANDOFF
+                            </div>
+                            <div class="figma-feature-box">
+                                <div class="figma-feature-card">
+                                    <strong>Dev Mode Integration</strong>
+                                    Utilizing structured sections, clear asset export layers, and annotated redlines to guarantee exact translation into code.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Case Studies Section -->
+        <section class="container" id="work">
+            <div class="section-header">
+                <h2>Featured Case Studies</h2>
+                <p>Solving complex digital architecture problems for enterprises, startups, and open source platforms.</p>
+            </div>
+            
+            <div class="case-studies-grid">
+                <!-- Case Study 1 -->
+                <div class="case-study-card">
+                    <div class="card-visual" style="background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);">
+                        <!-- Custom SVG Illustrating Enterprise Analytics Dashboard -->
+                        <svg viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="20" y="20" width="360" height="160" rx="6" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+                            <!-- Side Navigation Bar -->
+                            <rect x="28" y="28" width="50" height="144" rx="4" fill="#0f172a"/>
+                            <rect x="36" y="38" width="34" height="6" rx="2" fill="#0284c7"/>
+                            <rect x="36" y="52" width="34" height="6" rx="2" fill="#334155"/>
+                            <rect x="36" y="66" width="34" height="6" rx="2" fill="#334155"/>
+                            <!-- Main Content Area -->
+                            <rect x="90" y="28" width="280" height="40" rx="4" fill="#0f172a"/>
+                            <circle cx="110" cy="48" r="10" fill="#3b82f6"/>
+                            <rect x="130" y="44" width="80" height="8" rx="2" fill="#334155"/>
+                            <!-- Charts / Grid Layout -->
+                            <rect x="90" y="78" width="135" height="94" rx="4" fill="#0f172a" stroke="#334155"/>
+                            <path d="M100 150 L130 110 L160 130 L210 90" stroke="#38bdf8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            <rect x="235" y="78" width="135" height="94" rx="4" fill="#0f172a" stroke="#334155"/>
+                            <rect x="245" y="90" width="115" height="12" rx="2" fill="#334155"/>
+                            <rect x="245" y="110" width="115" height="12" rx="2" fill="#334155"/>
+                            <rect x="245" y="130" width="75" height="12" rx="2" fill="#0284c7"/>
+                        </svg>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-client">Trovicor Solutions</div>
+                        <h3 class="card-title">Enterprise Analytics Dashboard Redesign</h3>
+                        <p class="card-desc">Simplifying dense intelligence workflows, organizing user paths, and implementing interactive auto-layout component files.</p>
+                        <div class="card-tags">
+                            <span class="card-tag">Figma Libraries</span>
+                            <span class="card-tag">Workflow Auditing</span>
+                            <span class="card-tag">Enterprise UI</span>
+                        </div>
+                        <button class="card-cta" onclick="openCaseStudy(1)">
+                            Read Case Study
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Case Study 2 -->
+                <div class="case-study-card">
+                    <div class="card-visual" style="background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);">
+                        <!-- Custom SVG Illustrating Learning Management Platform -->
+                        <svg viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="30" y="20" width="340" height="160" rx="12" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+                            <!-- Onboarding steps simulation -->
+                            <rect x="50" y="45" width="22" height="22" rx="6" fill="#0284c7"/>
+                            <text x="57" y="60" fill="#ffffff" font-family="sans-serif" font-size="12" font-weight="bold">1</text>
+                            <line x1="72" y1="56" x2="128" y2="56" stroke="#334155" stroke-dasharray="4 4" stroke-width="2"/>
+                            
+                            <rect x="128" y="45" width="22" height="22" rx="6" fill="#334155"/>
+                            <text x="135" y="60" fill="#cbd5e1" font-family="sans-serif" font-size="12" font-weight="bold">2</text>
+                            <line x1="150" y1="56" x2="206" y2="56" stroke="#334155" stroke-dasharray="4 4" stroke-width="2"/>
+                            
+                            <rect x="206" y="45" width="22" height="22" rx="6" fill="#334155"/>
+                            <text x="213" y="60" fill="#cbd5e1" font-family="sans-serif" font-size="12" font-weight="bold">3</text>
+                            <line x1="228" y1="56" x2="284" y2="56" stroke="#334155" stroke-dasharray="4 4" stroke-width="2"/>
+                            
+                            <rect x="284" y="45" width="22" height="22" rx="6" fill="#334155"/>
+                            <text x="291" y="60" fill="#cbd5e1" font-family="sans-serif" font-size="12" font-weight="bold">4</text>
+                            
+                            <!-- Portal Content card -->
+                            <rect x="50" y="90" width="130" height="70" rx="6" fill="#0f172a" stroke="#334155"/>
+                            <rect x="60" y="102" width="110" height="8" rx="2" fill="#38bdf8"/>
+                            <rect x="60" y="118" width="70" height="6" rx="2" fill="#334155"/>
+                            <rect x="60" y="130" width="90" height="6" rx="2" fill="#334155"/>
+                            
+                            <rect x="200" y="90" width="150" height="70" rx="6" fill="#0f172a" stroke="#334155"/>
+                            <rect x="210" y="102" width="90" height="8" rx="2" fill="#0284c7"/>
+                            <rect x="210" y="118" width="130" height="6" rx="2" fill="#334155"/>
+                            <rect x="210" y="130" width="110" height="6" rx="2" fill="#334155"/>
+                        </svg>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-client">Al-Nafi</div>
+                        <h3 class="card-title">Learning Portal & Onboarding Flow</h3>
+                        <p class="card-desc">Redesigning user registration, mapping onboarding milestones, and running heuristic evaluations to boost conversion ratios.</p>
+                        <div class="card-tags">
+                            <span class="card-tag">Onboarding Optimization</span>
+                            <span class="card-tag">Usability Audit</span>
+                            <span class="card-tag">Interactive Flow</span>
+                        </div>
+                        <button class="card-cta" onclick="openCaseStudy(2)">
+                            Read Case Study
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Case Study 3 -->
+                <div class="case-study-card">
+                    <div class="card-visual" style="background: linear-gradient(135deg, #0f172a 0%, #064e3b 100%);">
+                        <!-- Custom SVG Illustrating Design System Component Variants -->
+                        <svg viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="40" y="20" width="320" height="160" rx="8" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+                            <!-- Button instances -->
+                            <rect x="60" y="45" width="110" height="32" rx="6" fill="#0284c7" stroke="#38bdf8" stroke-width="1.5"/>
+                            <text x="80" y="65" fill="#ffffff" font-family="sans-serif" font-size="11" font-weight="bold">Primary / Def</text>
+                            
+                            <rect x="60" y="90" width="110" height="32" rx="6" fill="none" stroke="#38bdf8" stroke-width="1.5"/>
+                            <text x="80" y="110" fill="#38bdf8" font-family="sans-serif" font-size="11" font-weight="bold">Outline / Hvr</text>
+                            
+                            <rect x="60" y="135" width="110" height="32" rx="6" fill="none" stroke="#475569" stroke-dasharray="3 3"/>
+                            <text x="82" y="155" fill="#475569" font-family="sans-serif" font-size="11" font-weight="bold">Ghost / Dis</text>
+                            
+                            <!-- Token Table block -->
+                            <rect x="195" y="45" width="145" height="122" rx="6" fill="#0f172a" stroke="#334155"/>
+                            <rect x="205" y="58" width="125" height="8" rx="2" fill="#334155"/>
+                            <rect x="205" y="74" width="70" height="8" rx="2" fill="#334155"/>
+                            <rect x="205" y="90" width="90" height="8" rx="2" fill="#334155"/>
+                            <line x1="205" y1="110" x2="330" y2="110" stroke="#334155" stroke-width="1"/>
+                            
+                            <circle cx="215" cy="132" r="6" fill="#22c55e"/>
+                            <circle cx="231" cy="132" r="6" fill="#ef4444"/>
+                            <circle cx="247" cy="132" r="6" fill="#eab308"/>
+                            <circle cx="263" cy="132" r="6" fill="#3b82f6"/>
+                        </svg>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-client">Enterprise Design System</div>
+                        <h3 class="card-title">Figma UI Tokens & Component Library</h3>
+                        <p class="card-desc">Architecting visual styling standards, structuring nested auto-layout variants, and automating developer token conversions.</p>
+                        <div class="card-tags">
+                            <span class="card-tag">Auto-Layout 4.0</span>
+                            <span class="card-tag">Accessibility Tokens</span>
+                            <span class="card-tag">Multi-Brand UI</span>
+                        </div>
+                        <button class="card-cta" onclick="openCaseStudy(3)">
+                            Read Case Study
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Figma Sandbox Showcase -->
+        <section class="sandbox-section" id="sandbox">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Live Design Token Simulator</h2>
+                    <p>Demonstrating Figma component variants, responsive state rules, and styles directly in code.</p>
+                </div>
+                
+                <div class="sandbox-layout">
+                    <!-- Config Controls -->
+                    <div class="sandbox-controls">
+                        <!-- Variant Select -->
+                        <div class="control-group">
+                            <div class="control-label">Figma Variant Element</div>
+                            <div class="control-options" id="variant-opts">
+                                <button class="control-opt active" onclick="updateSandbox('variant', 'button')">Action Button</button>
+                                <button class="control-opt" onclick="updateSandbox('variant', 'badge')">Status Badge</button>
+                                <button class="control-opt" onclick="updateSandbox('variant', 'input')">Layout Text Input</button>
+                            </div>
+                        </div>
+
+                        <!-- State Select -->
+                        <div class="control-group">
+                            <div class="control-label">Interactive State</div>
+                            <div class="control-options" id="state-opts">
+                                <button class="control-opt active" onclick="updateSandbox('state', 'default')">Default State</button>
+                                <button class="control-opt" onclick="updateSandbox('state', 'hover')">Hover State</button>
+                                <button class="control-opt" onclick="updateSandbox('state', 'disabled')">Disabled State</button>
+                            </div>
+                        </div>
+
+                        <!-- Border Radius Select -->
+                        <div class="control-group">
+                            <div class="control-label">Corner Radius Token</div>
+                            <div class="control-options" id="radius-opts">
+                                <button class="control-opt" onclick="updateSandbox('radius', '4px')">4px (Sharp)</button>
+                                <button class="control-opt active" onclick="updateSandbox('radius', '8px')">8px (Smooth)</button>
+                                <button class="control-opt" onclick="updateSandbox('radius', '16px')">16px (Pill)</button>
+                            </div>
+                        </div>
+
+                        <!-- Color Mode Select -->
+                        <div class="control-group">
+                            <div class="control-label">Theme Variable Mode</div>
+                            <div class="control-options" id="theme-opts">
+                                <button class="control-opt active" onclick="updateSandbox('theme', 'dark')">Figma Dark Variable</button>
+                                <button class="control-opt" onclick="updateSandbox('theme', 'light')">Figma Light Variable</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Visual Live Preview -->
+                    <div class="sandbox-preview">
+                        <div class="preview-header">
+                            <div class="preview-header-title">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="9" cy="9" r="2"></circle><circle cx="15" cy="15" r="2"></circle></svg>
+                                Interactive Sandbox Canvas
+                            </div>
+                            <span style="font-size: 0.75rem; font-family: monospace; color: var(--text-muted);">Scale: 100%</span>
+                        </div>
+                        <div class="preview-canvas" id="sandbox-canvas">
+                            <!-- Visual Component Target -->
+                            <div id="sandbox-component" class="sandbox-live-component">Preview Button</div>
+                        </div>
+                        <!-- Token Output code block -->
+                        <div class="preview-code-panel">
+                            <pre id="sandbox-tokens-code">// Figma Design Token Mappings</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Remote Readiness & Asynchronous Collaboration -->
+        <section class="container" id="remote">
+            <div class="section-header">
+                <h2>Asynchronous & Remote Design Ready</h2>
+                <p>Ensuring clear coordination across timezones through structured file setups and detailed documentation.</p>
+            </div>
+            
+            <div class="remote-layout">
+                <div class="remote-illustration">
+                    <div class="figma-file-mock">
+                        <div class="figma-file-header">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                            Figma Project Structure File
+                        </div>
+                        <div class="figma-file-layer annotated">
+                            📊 _Production Screens (4K/1080p Grid)
+                        </div>
+                        <div class="figma-file-layer">
+                            🧩 _Components Library & Local Tokens
+                        </div>
+                        <div class="figma-file-layer annotated">
+                            🗺️ _User Journey & Dynamic Flows
+                        </div>
+                        <div class="figma-file-layer">
+                            🧪 _Archive & Style Experiments
+                        </div>
+                    </div>
+                    <!-- Loom Visual Mock -->
+                    <div class="loom-preview-box">
+                        <button class="loom-play-btn" onclick="alert('Loom Handoff Walkthrough Video Simulation: Highlighting file structure, padding tokens, layout components, and design decisions.')" aria-label="Play Loom Walkthrough Demo">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                        </button>
+                        <div style="position: absolute; bottom: 12px; left: 16px; font-size: 0.75rem; color: #ffffff; background-color: rgba(15, 23, 42, 0.7); padding: 4px 8px; border-radius: 4px;">
+                            📼 Handoff Loom walkthrough (3:15)
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="remote-content">
+                    <h3 style="font-size: 1.8rem; margin-bottom: 16px;">Zero-Latency Remote Handoff</h3>
+                    <p style="margin-bottom: 24px; font-size: 1.05rem;">Working across borders requires visual documentation to prevent structural gaps. My handoff systems are designed to allow frontend engineers to work independently without scheduling blocker calls.</p>
+                    
+                    <div class="figma-badge-items">
+                        <div class="figma-badge-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <div><strong>Explicit Design Annotations</strong><p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">Clean badges explaining responsive layout logic, padding rules, and transition speeds.</p></div>
+                        </div>
+                        <div class="figma-badge-item" style="margin-top: 16px;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <div><strong>Structured Layer Naming Protocol</strong><p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">Zero un-named layers. Exact mappings to HTML semantic structures (Header, Sidebar, Main Area).</p></div>
+                        </div>
+                        <div class="figma-badge-item" style="margin-top: 16px;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <div><strong>JSON Design Token Outputs</strong><p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">Pre-compiled color configurations, typography dimensions, and corner radii formatting.</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section" id="contact">
+            <div class="container">
+                <div class="contact-layout">
+                    <div class="contact-info">
+                        <div class="contact-info-title">
+                            <h2>Let's Build Together</h2>
+                            <p>Looking for a UI/UX Designer to own your design system, streamline dashboards, or optimize your onboarding funnels? Get in touch.</p>
+                        </div>
+                        <div class="contact-methods">
+                            <a href="mailto:sajjadhussainshah763@gmail.com" class="contact-method-card">
+                                <div class="contact-method-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                                </div>
+                                <div class="contact-method-details">
+                                    <h4>Email Address</h4>
+                                    <p>sajjadhussainshah763@gmail.com</p>
+                                </div>
+                            </a>
+                            
+                            <a href="tel:+923315563759" class="contact-method-card">
+                                <div class="contact-method-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                                </div>
+                                <div class="contact-method-details">
+                                    <h4>Phone Number</h4>
+                                    <p>+92 331 5563759</p>
+                                </div>
+                            </a>
+
+                            <a href="https://linkedin.com/in/sajjad-hussain-97747a128" target="_blank" rel="noopener noreferrer" class="contact-method-card">
+                                <div class="contact-method-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                                </div>
+                                <div class="contact-method-details">
+                                    <h4>LinkedIn</h4>
+                                    <p>sajjad-hussain-97747a128</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Form -->
+                    <form class="contact-form" id="contactForm" onsubmit="handleContactSubmit(event)">
+                        <div class="form-alert" id="formAlert">
+                            🎉 Message Sent! Sajjad will respond within 24 hours.
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" required placeholder="Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" required placeholder="name@company.com">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Project Focus</label>
+                            <input type="text" id="subject" placeholder="e.g. Enterprise Dashboard, Figma Design System">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message Details</label>
+                            <textarea id="message" required placeholder="Outline your project scope, timeline, and needs..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="align-self: flex-start;">Send Project Request</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Sajjad Hussain. Built with semantic code, optimized responsive layouts, and modern CSS variables.</p>
+        </div>
     </footer>
 
+    <!-- Lightbox Modal for Case Studies -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeCaseStudyModal(event)">
+        <div class="modal-container">
+            <button class="modal-close" onclick="closeCaseStudy()" aria-label="Close Case Study Overlay">&times;</button>
+            <div class="modal-body" id="modalBody">
+                <!-- Injected dynamically via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Scripting -->
+    <script>
+        // Responsive Menu Toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuBtn.classList.toggle('active');
+        });
+
+        // Close menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuBtn.classList.remove('active');
+            });
+        });
+
+        // Design Process timeline controls
+        function switchProcess(index) {
+            // Update step triggers
+            const triggers = document.querySelectorAll('.step-trigger');
+            triggers.forEach((trigger, i) => {
+                if (i === index) {
+                    trigger.classList.add('active');
+                } else {
+                    trigger.classList.remove('active');
+                }
+            });
+
+            // Update content views
+            const contents = document.querySelectorAll('.process-content');
+            contents.forEach((content, i) => {
+                if (i === index) {
+                    content.classList.add('active');
+                } else {
+                    content.classList.remove('active');
+                }
+            });
+        }
+
+        // Case Studies Detail Repository
+        const caseStudiesData = {
+            1: {
+                client: "Trovicor Solutions",
+                title: "Enterprise Analytics Dashboard Redesign",
+                category: "Enterprise Software UI / Workflows",
+                timeline: "3 Months (Q1 2026)",
+                tools: "Figma, Design Tokens, Jira, Slack",
+                role: "Lead UI/UX Designer",
+                visual: `<div class="modal-hero-visual" style="background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);">
+                            <svg width="200" height="100" viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="10" y="10" width="180" height="80" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+                                <rect x="15" y="15" width="30" height="70" rx="2" fill="#0f172a"/>
+                                <rect x="50" y="15" width="135" height="20" rx="2" fill="#0f172a"/>
+                                <circle cx="160" cy="25" r="5" fill="#38bdf8"/>
+                                <rect x="50" y="40" width="60" height="45" rx="2" fill="#0f172a" stroke="#334155"/>
+                                <path d="M55 75 L70 55 L85 65 L105 45" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <rect x="120" y="40" width="65" height="45" rx="2" fill="#0f172a" stroke="#334155"/>
+                                <rect x="128" y="48" width="50" height="6" rx="1" fill="#334155"/>
+                                <rect x="128" y="58" width="50" height="6" rx="1" fill="#334155"/>
+                                <rect x="128" y="68" width="35" height="6" rx="1" fill="#0284c7"/>
+                            </svg>
+                         </div>`,
+                problem: "Cyber threat intelligence analysts faced workflow fatigue due to visually overloaded layout views. Redundant filter controls occupied 70% of screen space, forcing analysts to average 42 minutes to complete a single threat validation investigation.",
+                process: "I shadowed five remote security analysts to identify workflow friction. I executed a heuristic audit focused on spatial consistency, established an information architecture prioritizing critical alerts, and built nested Figma auto-layout modules representing active, inactive, and pending alert card states.",
+                solutions: [
+                    "Created a collapsible sidebar navigation contextually adjusting options depending on alert levels.",
+                    "Introduced unified typography styling matching WCAG 2.1 contrast guidelines to ensure legible text.",
+                    "Implemented Figma boolean components enabling instant variant swaps during review cycles."
+                ],
+                handoff: "Delivered annotated Figma design files bound to CSS layout variables. Setup separate flow paths for Alert Validation, Investigation Reports, and Threat Map coordinates. Collaborated asynchronously with frontend developers using Loom recorded screen walkthroughs, dropping visual QA errors to near-zero.",
+                outcome: "Average task completion time for cyber investigations was reduced from 42 minutes to 18 minutes (a 57% efficiency improvement), and visual consistency was unified across 12 dashboard layers."
+            },
+            2: {
+                client: "Al-Nafi",
+                title: "Learning Portal & Onboarding Funnel",
+                category: "Educational Web Platform / UX Research",
+                timeline: "2 Months (Q4 2025)",
+                tools: "Figma, UserTesting, Miro, Notion",
+                role: "Product Designer & UX Researcher",
+                visual: `<div class="modal-hero-visual" style="background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);">
+                            <svg width="200" height="100" viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="15" y="10" width="170" height="80" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+                                <circle cx="35" cy="30" r="10" fill="#0284c7"/>
+                                <text x="32" y="34" fill="#ffffff" font-family="sans-serif" font-size="10" font-weight="bold">1</text>
+                                <line x1="45" y1="30" x2="95" y2="30" stroke="#334155" stroke-dasharray="2 2" stroke-width="1.5"/>
+                                <circle cx="105" cy="30" r="10" fill="#334155"/>
+                                <text x="102" y="34" fill="#cbd5e1" font-family="sans-serif" font-size="10" font-weight="bold">2</text>
+                                <line x1="115" y1="30" x2="165" y2="30" stroke="#334155" stroke-dasharray="2 2" stroke-width="1.5"/>
+                                <circle cx="170" cy="30" r="5" fill="#334155"/>
+                                <rect x="35" y="55" width="130" height="25" rx="4" fill="#0f172a" stroke="#334155"/>
+                                <rect x="45" y="61" width="110" height="4" rx="1" fill="#38bdf8"/>
+                                <rect x="45" y="70" width="60" height="4" rx="1" fill="#334155"/>
+                            </svg>
+                         </div>`,
+                problem: "An onboarding drop-off rate of 48% was observed during student registration and course checkout, coupled with high support ticket inquiries from confused new users trying to find their courses.",
+                process: "Conducted remote unmoderated testing with 15 users. Uncovered visual issues around course requirement explanations. Executed a UX heuristic audit of the checkout workflow. The findings indicated a lack of system status signals, leaving students uncertain if their payment was processed.",
+                solutions: [
+                    "Designed a gamified step-by-step wizard tracking student progress visually during sign-up.",
+                    "Designed value cards clarifying course paths, eligibility, and lesson timelines.",
+                    "Restructured the user dashboard to feature a 'Resume Lesson' component immediately visible at login."
+                ],
+                handoff: "Constructed low-fidelity logical layout flows in Figma before completing high-fidelity screens. Bound onboarding steps to mobile-responsive grid variables to match desktop layouts. Provided developer handoffs with annotated steps, reducing onboarding support tickets.",
+                outcome: "Reduced checkout and registration drop-off by 32%, boosted student retention during the first month by 18%, and eliminated checkout friction."
+            },
+            3: {
+                client: "Unified Systems",
+                title: "Figma UI Tokens & Component Library",
+                category: "Scalable Enterprise Design Systems",
+                timeline: "Ongoing System (Launched 2026)",
+                tools: "Figma Variables, Style Dictionary, GitHub",
+                role: "Design System Lead",
+                visual: `<div class="modal-hero-visual" style="background: linear-gradient(135deg, #0f172a 0%, #064e3b 100%);">
+                            <svg width="200" height="100" viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="20" y="10" width="160" height="80" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+                                <rect x="30" y="22" width="55" height="16" rx="3" fill="#0284c7" stroke="#38bdf8" stroke-width="1"/>
+                                <text x="36" y="32" fill="#ffffff" font-family="sans-serif" font-size="7" font-weight="bold">Primary</text>
+                                <rect x="30" y="44" width="55" height="16" rx="3" fill="none" stroke="#38bdf8" stroke-width="1"/>
+                                <text x="40" y="54" fill="#38bdf8" font-family="sans-serif" font-size="7" font-weight="bold">Outline</text>
+                                <rect x="30" y="66" width="55" height="16" rx="3" fill="none" stroke="#475569" stroke-dasharray="2 2"/>
+                                <text x="41" y="76" fill="#475569" font-family="sans-serif" font-size="7" font-weight="bold">Ghost</text>
+                                <rect x="100" y="22" width="70" height="60" rx="3" fill="#0f172a" stroke="#334155"/>
+                                <circle cx="112" cy="35" r="4" fill="#22c55e"/>
+                                <circle cx="124" cy="35" r="4" fill="#ef4444"/>
+                                <circle cx="136" cy="35" r="4" fill="#eab308"/>
+                                <rect x="112" y="48" width="46" height="4" rx="1" fill="#334155"/>
+                                <rect x="112" y="58" width="46" height="4" rx="1" fill="#334155"/>
+                                <rect x="112" y="68" width="30" height="4" rx="1" fill="#0284c7"/>
+                            </svg>
+                         </div>`,
+                problem: "Twelve different design teams and engineering units were building duplicate components with inconsistent spacing, leading to visual fragmentation, color variations, and high QA inspection costs.",
+                process: "Audited 120 unique button formats and 40 card elements. Created spacing variables using an 8px scale. Built a responsive nested button and form instance library utilizing Figma variables to adjust corner radii and colors across light and dark theme contexts.",
+                solutions: [
+                    "Created nested component structures automatically adjusting size dimensions across small, medium, and large layouts.",
+                    "Defined semantic colors (Primary, Surface, Success, Border, Text Muted) linking to base variable tables.",
+                    "Built variants matching all states: Hover, Default, Focused, Disabled, Success, and Error."
+                ],
+                handoff: "Configured JSON structure export mappings translating Figma variables directly into CSS and Tailwind config variables. Supported developers with published component catalogs and automated updates.",
+                outcome: "Accelerated cross-functional product design cycles by 2.5x, decreased developer component integration times by 50%, and unified spacing standards."
+            }
+        };
+
+        function openCaseStudy(id) {
+            const data = caseStudiesData[id];
+            if (!data) return;
+
+            const modalBody = document.getElementById('modalBody');
+            modalBody.innerHTML = `
+                ${data.visual}
+                <div class="modal-title-area">
+                    <div style="font-size: 0.8rem; font-weight: 700; color: var(--primary-light); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">
+                        ${data.client}
+                    </div>
+                    <h2>${data.title}</h2>
+                </div>
+                
+                <div class="modal-meta-grid">
+                    <div class="modal-meta-item">
+                        <h5>Category</h5>
+                        <p>${data.category}</p>
+                    </div>
+                    <div class="modal-meta-item">
+                        <h5>Timeline</h5>
+                        <p>${data.timeline}</p>
+                    </div>
+                    <div class="modal-meta-item">
+                        <h5>My Role</h5>
+                        <p>${data.role}</p>
+                    </div>
+                    <div class="modal-meta-item">
+                        <h5>Core Tools</h5>
+                        <p>${data.tools}</p>
+                    </div>
+                </div>
+
+                <div class="modal-section-block">
+                    <h4>The Problem Statement</h4>
+                    <p>${data.problem}</p>
+                </div>
+
+                <div class="modal-section-block">
+                    <h4>Design Process & Audits</h4>
+                    <p>${data.process}</p>
+                </div>
+
+                <div class="modal-section-block">
+                    <h4>Key Solutions</h4>
+                    <ul class="modal-sublist">
+                        ${data.solutions.map(sol => `<li>${sol}</li>`).join('')}
+                    </ul>
+                </div>
+
+                <div class="modal-section-block">
+                    <h4>Developer Handoff Spec</h4>
+                    <p>${data.handoff}</p>
+                </div>
+
+                <div class="modal-section-block">
+                    <h4>Outcomes & Metrics</h4>
+                    <p>${data.outcome}</p>
+                </div>
+            `;
+
+            document.getElementById('modalOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden'; // Stop background scrolling
+        }
+
+        function closeCaseStudy() {
+            document.getElementById('modalOverlay').classList.remove('active');
+            document.body.style.overflow = 'auto'; // Re-enable background scrolling
+        }
+
+        function closeCaseStudyModal(event) {
+            // Close only if clicking outside the modal container
+            if (event.target === document.getElementById('modalOverlay')) {
+                closeCaseStudy();
+            }
+        }
+
+        // Live Design Token Simulator Config & Actions
+        const sandboxState = {
+            variant: 'button',
+            state: 'default',
+            radius: '8px',
+            theme: 'dark'
+        };
+
+        const themeVariables = {
+            dark: {
+                bg: '#0284c7',
+                text: '#ffffff',
+                border: '#38bdf8',
+                hoverBg: '#0369a1',
+                disabledBg: '#334155',
+                disabledText: '#94a3b8',
+                badgeBg: 'rgba(2, 132, 199, 0.2)',
+                badgeBorder: 'rgba(56, 189, 248, 0.4)',
+                badgeText: '#38bdf8',
+                inputBg: '#1e293b',
+                inputBorder: '#334155',
+                inputText: '#f8fafc',
+                canvasBg: '#1e293b'
+            },
+            light: {
+                bg: '#0ea5e9',
+                text: '#ffffff',
+                border: '#0284c7',
+                hoverBg: '#0284c7',
+                disabledBg: '#e2e8f0',
+                disabledText: '#94a3b8',
+                badgeBg: 'rgba(14, 165, 233, 0.1)',
+                badgeBorder: 'rgba(14, 165, 233, 0.3)',
+                badgeText: '#0284c7',
+                inputBg: '#ffffff',
+                inputBorder: '#cbd5e1',
+                inputText: '#0f172a',
+                canvasBg: '#f8fafc'
+            }
+        };
+
+        function updateSandbox(property, value) {
+            sandboxState[property] = value;
+
+            // Update button styles in controls UI
+            let listId = '';
+            if (property === 'variant') listId = 'variant-opts';
+            else if (property === 'state') listId = 'state-opts';
+            else if (property === 'radius') listId = 'radius-opts';
+            else if (property === 'theme') listId = 'theme-opts';
+
+            const container = document.getElementById(listId);
+            container.querySelectorAll('.control-opt').forEach(opt => {
+                if (opt.textContent.toLowerCase().includes(value.toLowerCase()) || 
+                    (value === '4px' && opt.textContent.includes('4px')) ||
+                    (value === '8px' && opt.textContent.includes('8px')) ||
+                    (value === '16px' && opt.textContent.includes('16px'))) {
+                    opt.classList.add('active');
+                } else {
+                    opt.classList.remove('active');
+                }
+            });
+
+            renderSandboxComponent();
+        }
+
+        function renderSandboxComponent() {
+            const comp = document.getElementById('sandbox-component');
+            const canvas = document.getElementById('sandbox-canvas');
+            const codeBlock = document.getElementById('sandbox-tokens-code');
+
+            const theme = themeVariables[sandboxState.theme];
+            canvas.style.backgroundColor = theme.canvasBg;
+
+            // Reset classes & inline styles
+            comp.className = 'sandbox-live-component';
+            comp.style = '';
+
+            let styleObj = {};
+            let elementMarkup = '';
+
+            // Apply corner radius token
+            styleObj['border-radius'] = sandboxState.radius;
+
+            if (sandboxState.variant === 'button') {
+                comp.textContent = "Action Button";
+                styleObj['padding'] = '12px 24px';
+                styleObj['font-weight'] = '600';
+                styleObj['font-family'] = 'var(--font-heading)';
+                styleObj['font-size'] = '0.95rem';
+                styleObj['border'] = '1px solid transparent';
+                styleObj['cursor'] = 'pointer';
+
+                if (sandboxState.state === 'default') {
+                    styleObj['background-color'] = theme.bg;
+                    styleObj['color'] = theme.text;
+                    styleObj['border-color'] = theme.border;
+                } else if (sandboxState.state === 'hover') {
+                    styleObj['background-color'] = theme.hoverBg;
+                    styleObj['color'] = theme.text;
+                    styleObj['border-color'] = theme.border;
+                    styleObj['transform'] = 'translateY(-1px)';
+                    styleObj['box-shadow'] = '0 4px 12px rgba(2, 132, 199, 0.3)';
+                } else if (sandboxState.state === 'disabled') {
+                    styleObj['background-color'] = theme.disabledBg;
+                    styleObj['color'] = theme.disabledText;
+                    styleObj['cursor'] = 'not-allowed';
+                }
+            } else if (sandboxState.variant === 'badge') {
+                comp.textContent = "Status Active";
+                styleObj['padding'] = '6px 14px';
+                styleObj['font-weight'] = '700';
+                styleObj['font-family'] = 'var(--font-body)';
+                styleObj['font-size'] = '0.75rem';
+                styleObj['text-transform'] = 'uppercase';
+                styleObj['letter-spacing'] = '0.05em';
+                
+                if (sandboxState.state === 'default') {
+                    styleObj['background-color'] = theme.badgeBg;
+                    styleObj['color'] = theme.badgeText;
+                    styleObj['border'] = `1px solid ${theme.badgeBorder}`;
+                } else if (sandboxState.state === 'hover') {
+                    styleObj['background-color'] = theme.badgeBg;
+                    styleObj['color'] = theme.badgeText;
+                    styleObj['border'] = `1.5px solid ${theme.border}`;
+                } else if (sandboxState.state === 'disabled') {
+                    styleObj['background-color'] = theme.disabledBg;
+                    styleObj['color'] = theme.disabledText;
+                    styleObj['border'] = `1px solid ${theme.inputBorder}`;
+                }
+            } else if (sandboxState.variant === 'input') {
+                comp.textContent = "User Input field";
+                styleObj['padding'] = '10px 16px';
+                styleObj['font-family'] = 'var(--font-body)';
+                styleObj['font-size'] = '0.9rem';
+                styleObj['border'] = `1px solid ${theme.inputBorder}`;
+                styleObj['background-color'] = theme.inputBg;
+                styleObj['color'] = theme.inputText;
+                styleObj['width'] = '200px';
+
+                if (sandboxState.state === 'hover') {
+                    styleObj['border-color'] = theme.border;
+                } else if (sandboxState.state === 'disabled') {
+                    styleObj['background-color'] = theme.disabledBg;
+                    styleObj['color'] = theme.disabledText;
+                    styleObj['cursor'] = 'not-allowed';
+                }
+            }
+
+            // Apply styles programmatically
+            for (const [key, value] of Object.entries(styleObj)) {
+                comp.style[key] = value;
+            }
+
+            // Update code panel JSON representation
+            const tokenJSON = {
+                "Metadata": {
+                    "Author": "Sajjad Hussain",
+                    "TargetElement": sandboxState.variant,
+                    "VariableMode": sandboxState.theme.toUpperCase(),
+                    "SystemGrid": "8px"
+                },
+                "Tokens": {
+                    "border-radius": sandboxState.radius,
+                    "background": styleObj['background-color'] || styleObj['background'] || theme.bg,
+                    "text-color": styleObj['color'] || theme.text,
+                    "border-width": styleObj['border'] ? '1px' : '0px',
+                    "font-family": sandboxState.variant === 'button' ? 'Outfit' : 'Inter',
+                    "padding": styleObj['padding']
+                }
+            };
+            codeBlock.textContent = `// Figma JSON Design Tokens Sync\n` + JSON.stringify(tokenJSON, null, 2);
+        }
+
+        // Initialize sandbox elements
+        renderSandboxComponent();
+
+        // Contact Form Submission Handler
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            const formAlert = document.getElementById('formAlert');
+            formAlert.style.display = 'block';
+            
+            // Clear inputs
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('subject').value = '';
+            document.getElementById('message').value = '';
+            
+            // Hide alert after 4 seconds
+            setTimeout(() => {
+                formAlert.style.display = 'none';
+            }, 4000);
+        }
+    </script>
 </body>
 </html>
